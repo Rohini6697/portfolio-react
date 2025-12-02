@@ -1,0 +1,10 @@
+body{
+    background-color: #200238;
+}
+.contents{
+    list-style-type: none;
+    display: flex;
+    justify-content: end;
+    gap: 50px;
+    padding-right: 30px;
+}

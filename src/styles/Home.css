@@ -1,27 +1,96 @@
-body{
-	margin: 0;
-	padding: 0;
-}
-section{
-	font-size:3rem;
-	position:relative;
-	height:100vh;
-	
-	h1{
-		position:absolute;
-		top:40%;
-		left:50%;
-		transform:translate(-50%,-50%);
-	}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #200238;
 }
 
-
-
-
-section:nth-child(odd){
-	/* // background-color: grey; */
-	color:white;
-	background-color: #b61924;
-
+/* -----------------------------
+   HERO SECTION (Particles BG)
+-------------------------------- */
+#particles-js {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* FULL SCREEN */
 }
 
+/* Overlay Text */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero-text h3 {
+  font-size: 1.6rem;
+  margin-top: 10px;
+}
+
+/* -----------------------------
+   ABOUT SECTION
+-------------------------------- */
+#section2 {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+  border: 2px solid darkorange;
+  background-color: #200238;
+}
+
+#div2 {
+  border: 2px solid white;
+  width: 800px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* -----------------------------
+   EDUCATION
+-------------------------------- */
+#section3 {
+  /* min-height: 100vh; */
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  border: 2px solid #067fd6;
+  background-color: #200238;
+}
+
+#section3 h2 {
+  margin-bottom: 20px;
+}
+
+#section3 div {
+  border: 2px solid white;
+  width: 500px;
+  height: 230px;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* -----------------------------
+   SECTION 4
+-------------------------------- */
+#section4 {
+  height: 100vh;
+  color: white;
+  background-color: #200238;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
