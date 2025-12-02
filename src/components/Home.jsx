@@ -40,86 +40,108 @@ const Home = () => {
       retina_detect: true,
     });
 
+
     // --------------------- SKILL SPHERE ------------------------
-    const canvas = document.getElementById("skillCanvas");
-    const ctx = canvas.getContext("2d");
+// --------------------- SKILL SPHERE ------------------------
+const canvas = document.getElementById("skillCanvas");
+const ctx = canvas.getContext("2d");
 
-    let width, height, radius;
-    function resizeCanvas() {
-      width = canvas.width = canvas.offsetWidth;
-      height = canvas.height = canvas.offsetHeight;
-      radius = Math.min(width, height) / 3;
+let width, height, radius;
+function resizeCanvas() {
+  width = canvas.width = canvas.offsetWidth;
+  height = canvas.height = canvas.offsetHeight;
+  radius = Math.min(width, height) / 2.2;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+const skills = [
+  "Python", "Django", "React", "HTML", "CSS", "JavaScript",
+  "MySQL", "MongoDB", "Git", "GitHub", "Bootstrap", "REST API"
+];
+
+const dots = [];
+const total = skills.length;
+
+for (let i = 0; i < total; i++) {
+  const phi = Math.acos(-1 + (2 * i) / total);
+  const theta = Math.sqrt(total * Math.PI) * phi;
+
+  dots.push({
+    text: skills[i],
+    x: radius * Math.sin(phi) * Math.cos(theta),
+    y: radius * Math.sin(phi) * Math.sin(theta),
+    z: radius * Math.cos(phi)
+  });
+}
+
+let angleX = 0.002;
+let angleY = 0.002;
+
+function rotateX(dot) {
+  const y = dot.y * Math.cos(angleX) - dot.z * Math.sin(angleX);
+  const z = dot.y * Math.sin(angleX) + dot.z * Math.cos(angleX);
+  dot.y = y;
+  dot.z = z;
+}
+
+function rotateY(dot) {
+  const x = dot.z * Math.sin(angleY) + dot.x * Math.cos(angleY);
+  const z = dot.z * Math.cos(angleY) - dot.x * Math.sin(angleY);
+  dot.x = x;
+  dot.z = z;
+}
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  const projected = [];
+
+  dots.forEach((dot) => {
+    rotateX(dot);
+    rotateY(dot);
+
+    const scale = 300 / (300 + dot.z);
+    const x = dot.x * scale + width / 2;
+    const y = dot.y * scale + height / 2;
+
+    projected.push({ x, y, z: dot.z });
+
+    ctx.font = `${18 * scale + 12}px Poller One`;
+    ctx.fillStyle = "#fff";
+    ctx.fillText(dot.text, x, y);
+  });
+
+  // ---------------- LINE DRAWING WHEN CLOSE ----------------
+// ---------------- LINE DRAWING WHEN CLOSE ----------------
+for (let i = 0; i < projected.length; i++) {
+  for (let j = i + 1; j < projected.length; j++) {
+    const dx = projected[i].x - projected[j].x;
+    const dy = projected[i].y - projected[j].y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    const maxDist = 170; // <-- increased distance for more lines
+
+    if (dist < maxDist) {
+      let opacity = 1 - dist / maxDist; // fades based on new distance
+      ctx.strokeStyle = `rgba(255,255,255,${opacity})`;
+      ctx.lineWidth = 1;
+
+      ctx.beginPath();
+      ctx.moveTo(projected[i].x, projected[i].y);
+      ctx.lineTo(projected[j].x, projected[j].y);
+      ctx.stroke();
     }
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+  }
+}
 
-    const skills = [
-      "Python",
-      "Django",
-      "React",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "MySQL",
-      "MongoDB",
-      "Git",
-      "GitHub",
-      "Bootstrap",
-      "REST API",
-    ];
 
-    const dots = [];
-    const total = skills.length;
+  requestAnimationFrame(animate);
+}
 
-    for (let i = 0; i < total; i++) {
-      const phi = Math.acos(-1 + (2 * i) / total);
-      const theta = Math.sqrt(total * Math.PI) * phi;
+animate();
 
-      dots.push({
-        text: skills[i],
-        x: radius * Math.sin(phi) * Math.cos(theta),
-        y: radius * Math.sin(phi) * Math.sin(theta),
-        z: radius * Math.cos(phi),
-      });
-    }
 
-    let angleX = 0.002;
-    let angleY = 0.002;
-
-    function rotateX(dot) {
-      const y = dot.y * Math.cos(angleX) - dot.z * Math.sin(angleX);
-      const z = dot.y * Math.sin(angleX) + dot.z * Math.cos(angleX);
-      dot.y = y;
-      dot.z = z;
-    }
-
-    function rotateY(dot) {
-      const x = dot.z * Math.sin(angleY) + dot.x * Math.cos(angleY);
-      const z = dot.z * Math.cos(angleY) - dot.x * Math.sin(angleY);
-      dot.x = x;
-      dot.z = z;
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-
-      dots.forEach((dot) => {
-        rotateX(dot);
-        rotateY(dot);
-
-        const scale = 300 / (300 + dot.z);
-        const x = dot.x * scale + width / 2;
-        const y = dot.y * scale + height / 2;
-
-        ctx.font = `${14 * scale + 8}px Poller One`;
-        ctx.fillStyle = "#fff";
-        ctx.fillText(dot.text, x, y);
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    animate();
   }, []);
 
   return (
@@ -175,11 +197,6 @@ const Home = () => {
         <h1 className="skills-title">Skills</h1>
         <div className="skill-section">
           <canvas id="skillCanvas"></canvas>
-
-          {/* SEO Hidden Text for Google */}
-          <div className="seo-text">
-            Python, Django, HTML, CSS, JavaScript, React, MySQL, MongoDB, Git, GitHub
-          </div>
         </div>
       </section>
     </div>
