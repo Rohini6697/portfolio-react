@@ -57,30 +57,68 @@ body {
    EDUCATION
 -------------------------------- */
 #section3 {
-  /* min-height: 100vh; */
-  color: aliceblue;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  border: 2px solid #067fd6;
-  background-color: #200238;
+  padding: 50px 20px;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
 #section3 h2 {
-  margin-bottom: 20px;
+  font-size: 36px;
+  margin-bottom: 40px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
-#section3 div {
-  border: 2px solid white;
-  width: 500px;
-  height: 230px;
-  margin-top: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: rgba(255, 255, 255, 0.05);
+/* GRID CONTAINER */
+#section3 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Make the heading span full width */
+#section3 h2 {
+  grid-column: 1 / -1;
+}
+
+/* CARD STYLING */
+.edu-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-left: 4px solid #fff;
+  padding: 20px 25px;
+  width: 80%;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  transition: 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.edu-card:hover {
+  transform: scale(1.03);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* CENTER THE LAST CARD */
+.edu-card:last-child {
+  grid-column: 1 / -1;   /* span both columns */
+  justify-self: center;
+  width: 50%;
+}
+
+/* TEXT STYLING */
+.edu-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.edu-card h4 {
+  font-size: 16px;
+  opacity: 0.9;
+  margin: 4px 0;
 }
 
 /* -----------------------------
@@ -122,4 +160,127 @@ body {
   display: block;
   /* margin-top: -20px; */
   border: 2px solid rgb(232, 66, 250);
+}
+.skills{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  list-style-type: none;
+  color: aliceblue;
+  gap: 20px;
+  padding-right: 20px;
+}
+.skills li{
+  /* border: 2px solid white; */
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.skills li:hover{
+  background-color: #8901f7;
+  color: black;
+  font-weight: 500;
+}
+
+
+/* gallery layout */
+.project {
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  height: 300px;
+}
+
+/* Container around each image */
+.imgWrapper {
+  position: relative;
+  width: 10%;          /* same as your old design */
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+/* Hover = expand to 50% area */
+.imgWrapper:hover {
+  width: 50%;
+}
+
+/* Image itself */
+.imgWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  transition: transform 0.5s ease;
+}
+
+/* Slight zoom inside */
+.imgWrapper:hover img {
+  transform: scale(1.05);
+}
+
+/* Description text */
+.imgWrapper .desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: center;
+  font-size: 15px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.3s ease;
+}
+
+/* Show text on hover */
+.imgWrapper:hover .desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.connect{
+  color: #fff;
+}
+
+.contact{
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  gap: 20px;
+
+}
+.contact input,textarea{
+  width: 500px;
+  height: 50px;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid white;
+}
+.contact input::placeholder{
+  color: #fff;
+  font-weight: bolder;
+}
+.contact textarea::placeholder{
+  color: #fff;
+  font-weight: bolder;
 }

@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
 import "../../src/styles/Home.css";
+import img1 from "../../src/images/career1.png"
+import img2 from "../../src/images/blood1.jpg"
+import img3 from "../../src/images/jewellery.jpg"
+import img4 from "../../src/images/store1.png"
 
 const Home = () => {
   useEffect(() => {
@@ -170,21 +174,21 @@ animate();
       <section id="section3">
         <h2>Education</h2>
 
-        <div>
+        <div class="edu-card">
           <h3>B.Tech in Computer Science and Engineering</h3>
           <h4>LBS College of Engineering Kasaragod</h4>
           <h4>CGPA: 6.58</h4>
           <h4>2021-2025</h4>
         </div>
 
-        <div>
+        <div class="edu-card">
           <h3>Higher Secondary Education</h3>
           <h4>JNMGHSS Puthuppanam, Vadakara</h4>
           <h4>97%</h4>
           <h4>2019-2021</h4>
         </div>
 
-        <div>
+        <div class="edu-card">
           <h3>High School Education</h3>
           <h4>JNMGHSS Puthuppanam, Vadakara</h4>
           <h4>96%</h4>
@@ -192,13 +196,66 @@ animate();
         </div>
       </section>
 
+
       {/* SKILLS SECTION */}
       <section id="section4">
         <h1 className="skills-title">Skills</h1>
         <div className="skill-section">
           <canvas id="skillCanvas"></canvas>
         </div>
+        {/* <div> */}
+          <ul className="skills">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Python</li>
+            <li>Django</li>
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Mysql</li>
+            <li>MongoDB</li>
+            <li>Bootstrap</li>
+            <li>C Programming</li>
+          </ul>
+        {/* </div> */}
       </section>
+      <section className="project">
+      <h1>Projects</h1>
+
+      <div className="gallery">
+
+        <div className="imgWrapper">
+          <img src={img1} alt="" />
+          <span className="desc">CareerMatch Project</span>
+        </div>
+
+        <div className="imgWrapper">
+          <img src={img2} alt="" />
+          <span className="desc">LifeLink App</span>
+        </div>
+
+        <div className="imgWrapper">
+          <img src={img3} alt="" />
+          <span className="desc">Dennel Delivery System</span>
+        </div>
+
+        <div className="imgWrapper">
+          <img src={img4} alt="" />
+          <span className="desc">Organic Store Website</span>
+        </div>
+
+      </div>
+    </section>   
+    <section className="connect">
+      <h1>Connect with Me</h1>
+      <div className="contact">
+        <input type="text" placeholder="Name"></input>
+        <input type="email" placeholder="Email"></input>
+        <textarea placeholder="Message"></textarea>
+      </div>
+    </section> 
+
     </div>
   );
 };
