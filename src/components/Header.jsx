@@ -5,9 +5,11 @@ const Header = () => {
   return (
     <nav>
         <ul className='contents'>
-            <li><button>Home</button></li>
+            <li><button>About</button></li>
+            <li><button>Education</button></li>
             <li><button>Skill</button></li>
             <li><button>Projects</button></li>
+            <li><button>Contact Me</button></li>
         </ul>
     </nav>
   )

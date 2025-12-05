@@ -7,4 +7,49 @@ body{
     justify-content: end;
     gap: 50px;
     padding-right: 30px;
+    
+}
+.contents button{
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50px;
+}
+.contents button:hover{
+    background-color: blueviolet;
+    color: white;
+    font-weight: bolder;
+}
+/* Input + Textarea General Style */
+.contact input,
+.contact textarea {
+  color: white;              /* <-- text stays white */
+  outline: none;             
+  box-shadow: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+/* Placeholder style (before focus) */
+.contact input::placeholder,
+.contact textarea::placeholder {
+  color: white;              /* <-- placeholder white */
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+/* Placeholder disappears on focus */
+.contact input:focus::placeholder,
+.contact textarea:focus::placeholder {
+  color: transparent;
+}
+
+/* Remove any blue border on focus */
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  box-shadow: none;
 }

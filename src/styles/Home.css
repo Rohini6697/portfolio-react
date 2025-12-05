@@ -7,20 +7,31 @@ body {
 /* -----------------------------
    HERO SECTION (Particles BG)
 -------------------------------- */
+/* FULLSCREEN PARTICLES BACKGROUND */
 #particles-js {
   position: relative;
   width: 100%;
-  height: 100vh; /* FULL SCREEN */
+  height: 100vh;
 }
 
-/* Overlay Text */
-.hero-text {
+/* CONTAINER HOLDS IMAGE + TEXT */
+.hero-content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  
+  display: flex;
+  flex-direction: column; /* Image below text */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* TEXT STYLING */
+.hero-text {
   text-align: center;
+  color: white;
   font-family: "Times New Roman", Times, serif;
 }
 
@@ -34,6 +45,16 @@ body {
   margin-top: 10px;
 }
 
+/* PROFILE IMAGE */
+.hero-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
 /* -----------------------------
    ABOUT SECTION
 -------------------------------- */
@@ -42,13 +63,14 @@ body {
   display: flex;
   justify-content: center;
   padding: 50px 0;
-  border: 2px solid darkorange;
+  /* border: 2px solid darkorange; */
   background-color: #200238;
 }
 
 #div2 {
   border: 2px solid white;
   width: 800px;
+  border-radius: 70px;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.05);
 }
@@ -77,6 +99,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   justify-items: center;
+  background-color: #200238;
 }
 
 /* Make the heading span full width */
@@ -141,7 +164,7 @@ body {
   top: 20px;        /* FIX: heading stays at top */
   left: 50%;
   transform: translateX(-50%);
-  border: 2px solid darkcyan;
+  /* border: 2px solid darkcyan; */
   /* z-index: 10; */
 }
 
@@ -159,7 +182,7 @@ body {
   height: 100%;
   display: block;
   /* margin-top: -20px; */
-  border: 2px solid rgb(232, 66, 250);
+  /* border: 2px solid rgb(232, 66, 250); */
 }
 .skills{
   display: grid;
@@ -186,80 +209,111 @@ body {
 
 
 /* gallery layout */
-.project {
+
+
+.project h1 {
   text-align: center;
-  padding: 20px;
-  color: white;
+  color: #fff;
 }
 
 .gallery {
+  width: 100%;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-  width: 100%;
-  height: 300px;
+  gap: 10px;
 }
 
-/* Container around each image */
+/* Wrapper */
 .imgWrapper {
   position: relative;
-  width: 10%;          /* same as your old design */
+  width: 10%;
   height: 100%;
   overflow: hidden;
   border-radius: 10px;
   transition: width 0.5s ease;
+  cursor: pointer;
 }
 
-/* Hover = expand to 50% area */
-.imgWrapper:hover {
-  width: 50%;
-}
-
-/* Image itself */
+/* IMAGE: same style as before */
 .imgWrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border: 2px solid white;
   border-radius: 10px;
-  border: 2px solid #fff;
-  transition: transform 0.5s ease;
+  transition: all ease 0.5s;
 }
 
-/* Slight zoom inside */
-.imgWrapper:hover img {
-  transform: scale(1.05);
+/* EXACT SAME EFFECT (image becomes 50%) */
+.imgWrapper:hover {
+  width: 50%;
 }
 
 /* Description text */
-.imgWrapper .desc {
+.desc {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+  right: 0;        /* Make it stretch full width */
+  width: 100%;     /* Ensure full width after expansion */
   text-align: center;
-  font-size: 15px;
+  padding: 8px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
 
   opacity: 0;
-  transform: translateY(20px);
-  transition: 0.3s ease;
+  transform: translateY(100%);
+  transition: all 0.4s ease;
+  white-space: nowrap;   /* Prevent breaking into next line */
 }
 
-/* Show text on hover */
+
+/* show description on hover */
 .imgWrapper:hover .desc {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Buttons */
+.btnGroup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btnGroup button {
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btnGroup button:hover {
+  background: #fff;
+}
+
+/* show buttons on hover */
+.imgWrapper:hover .btnGroup {
+  opacity: 1;
+}
+
 .connect{
   color: #fff;
+  margin-top: 50px;
+  /* border: 2px solid white; */
 }
 
 .contact{
-  border: 2px solid white;
+  /* border: 2px solid white; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -283,4 +337,20 @@ body {
 .contact textarea::placeholder{
   color: #fff;
   font-weight: bolder;
+}
+.myBtn {
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #890af1, #370463);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.myBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(101, 6, 217, 0.4);
 }

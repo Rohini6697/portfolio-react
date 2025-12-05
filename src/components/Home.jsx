@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../src/styles/Home.css";
 import img1 from "../../src/images/career1.png"
 import img2 from "../../src/images/blood1.jpg"
 import img3 from "../../src/images/jewellery.jpg"
 import img4 from "../../src/images/store1.png"
+import profile from "../../src/images/1.jpg"
 
 const Home = () => {
+const [show,setShow] = useState(false)
+const open = () => setShow(true)
+const close = () => setShow(false)
   useEffect(() => {
     // --------------------- PARTICLES JS ------------------------
     window.particlesJS("particles-js", {
@@ -43,6 +47,7 @@ const Home = () => {
       },
       retina_detect: true,
     });
+
 
 
     // --------------------- SKILL SPHERE ------------------------
@@ -152,11 +157,16 @@ animate();
     <div>
       {/* HERO SECTION */}
       <section id="particles-js">
-        <div className="hero-text">
-          <h1>Hi, I am Rohini Sureshbabu</h1>
-          <h3>Python Full-Stack Developer Intern</h3>
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1>Hi, I am Rohini Sureshbabu</h1>
+            <h3>Python Full-Stack Developer Intern</h3>
+          </div>
+
+          <img src={profile} alt="Rohini" className="hero-img" />
         </div>
       </section>
+
 
       {/* ABOUT */}
       <section id="section2">
@@ -177,21 +187,18 @@ animate();
         <div class="edu-card">
           <h3>B.Tech in Computer Science and Engineering</h3>
           <h4>LBS College of Engineering Kasaragod</h4>
-          <h4>CGPA: 6.58</h4>
           <h4>2021-2025</h4>
         </div>
 
         <div class="edu-card">
           <h3>Higher Secondary Education</h3>
           <h4>JNMGHSS Puthuppanam, Vadakara</h4>
-          <h4>97%</h4>
           <h4>2019-2021</h4>
         </div>
 
         <div class="edu-card">
           <h3>High School Education</h3>
           <h4>JNMGHSS Puthuppanam, Vadakara</h4>
-          <h4>96%</h4>
           <h4>2018-2019</h4>
         </div>
       </section>
@@ -221,38 +228,67 @@ animate();
         {/* </div> */}
       </section>
       <section className="project">
-      <h1>Projects</h1>
+        <h1>Projects</h1>
 
-      <div className="gallery">
+        <div className="gallery">
 
-        <div className="imgWrapper">
-          <img src={img1} alt="" />
-          <span className="desc">CareerMatch Project</span>
+          <div className="imgWrapper">
+            <img src={img1} alt="" />
+            <span className="desc">CareerMatch Project</span>
+            <div className="btnGroup">
+              <button onClick={open}>View</button>
+              <button>Code</button>
+            </div>
+          </div>
+
+          <div className="imgWrapper">
+            <img src={img2} alt="" />
+            <span className="desc">LifeLink App</span>
+            <div className="btnGroup">
+              <button>View</button>
+              <button>Code</button>
+            </div>
+          </div>
+
+          <div className="imgWrapper">
+            <img src={img3} alt="" />
+            <span className="desc">Dennel Delivery System</span>
+            <div className="btnGroup">
+              <button>View</button>
+              <button>Code</button>
+            </div>
+          </div>
+
+          <div className="imgWrapper">
+            <img src={img4} alt="" />
+            <span className="desc">Organic Store Website</span>
+            <div className="btnGroup">
+              <button>View</button>
+              <button>Code</button>
+            </div>
+          </div>
+
         </div>
-
-        <div className="imgWrapper">
-          <img src={img2} alt="" />
-          <span className="desc">LifeLink App</span>
+        
+      </section>
+      {show && (
+        <div className="popupOverlay" onClick={close}>
+          <div className="popupBox" onClick={(e) => e.stopPropagation()}>
+            <h2>CareerMatch Project</h2>
+            <p>This is where you can show project details or screenshots.</p>
+            <button onClick={close}>Close</button>
+          </div>
         </div>
+      )}
 
-        <div className="imgWrapper">
-          <img src={img3} alt="" />
-          <span className="desc">Dennel Delivery System</span>
-        </div>
-
-        <div className="imgWrapper">
-          <img src={img4} alt="" />
-          <span className="desc">Organic Store Website</span>
-        </div>
-
-      </div>
-    </section>   
+ 
     <section className="connect">
       <h1>Connect with Me</h1>
       <div className="contact">
         <input type="text" placeholder="Name"></input>
         <input type="email" placeholder="Email"></input>
         <textarea placeholder="Message"></textarea>
+        <button className="myBtn">Send</button>
       </div>
     </section> 
 
