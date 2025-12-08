@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "../../src/styles/Home.css";
-import img1 from "../../src/images/career1.png"
-import img2 from "../../src/images/blood1.jpg"
-import img3 from "../../src/images/jewellery.jpg"
-import img4 from "../../src/images/store1.png"
+
 import profile from "../../src/images/1.jpg"
+import { project } from "../data/projects";
 
 const Home = () => {
 const [show,setShow] = useState(false)
-const open = () => setShow(true)
-const close = () => setShow(false)
+const [selectedProject, setSelectedProject] = useState(null);
+
+const open = (project) => {
+  setSelectedProject(project);
+  setShow(true);
+};
+
+const close = () => {
+  setShow(false);
+  setSelectedProject(null);
+};
+
   useEffect(() => {
     // --------------------- PARTICLES JS ------------------------
     window.particlesJS("particles-js", {
@@ -231,55 +239,57 @@ animate();
         <h1>Projects</h1>
 
         <div className="gallery">
-
-          <div className="imgWrapper">
-            <img src={img1} alt="" />
-            <span className="desc">CareerMatch Project</span>
-            <div className="btnGroup">
-              <button onClick={open}>View</button>
-              <button>Code</button>
+          {project.map((project, i) => (
+            <div className="imgWrapper" key={i}>
+              <img src={project.image} alt="" />
+              <span className="desc">{project.title}</span>
+              <div className="btnGroup">
+                <button onClick={() => open(project)}>View</button>
+              </div>
             </div>
-          </div>
-
-          <div className="imgWrapper">
-            <img src={img2} alt="" />
-            <span className="desc">LifeLink App</span>
-            <div className="btnGroup">
-              <button>View</button>
-              <button>Code</button>
-            </div>
-          </div>
-
-          <div className="imgWrapper">
-            <img src={img3} alt="" />
-            <span className="desc">Dennel Delivery System</span>
-            <div className="btnGroup">
-              <button>View</button>
-              <button>Code</button>
-            </div>
-          </div>
-
-          <div className="imgWrapper">
-            <img src={img4} alt="" />
-            <span className="desc">Organic Store Website</span>
-            <div className="btnGroup">
-              <button>View</button>
-              <button>Code</button>
-            </div>
-          </div>
-
+          ))}
         </div>
+
         
       </section>
-      {show && (
-        <div className="popupOverlay" onClick={close}>
-          <div className="popupBox" onClick={(e) => e.stopPropagation()}>
-            <h2>CareerMatch Project</h2>
-            <p>This is where you can show project details or screenshots.</p>
-            <button onClick={close}>Close</button>
-          </div>
-        </div>
+      {show && selectedProject && (
+  <div className="popupOverlay" onClick={close}>
+    <div className="popupBox" onClick={(e) => e.stopPropagation()}>
+      <h2>{selectedProject.title}</h2>
+      <p>{selectedProject.desc}</p>
+
+      {/* ✅ Show Live Demo only if live link exists */}
+      {selectedProject.live && (
+        <p>
+          <a 
+            href={selectedProject.live}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Live Demo
+          </a>
+        </p>
       )}
+
+      {/* ✅ Show Code only if code link exists */}
+      {selectedProject.code && (
+        <p>
+          <a 
+            href={selectedProject.code}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Code
+          </a>
+        </p>
+      )}
+
+      <button onClick={close}>Close</button>
+    </div>
+  </div>
+)}
+
+
 
  
     <section className="connect">
