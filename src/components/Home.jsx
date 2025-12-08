@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../../src/styles/Home.css";
-
+import {skills} from "../data/skills"
 import profile from "../../src/images/1.jpg"
 import { project } from "../data/projects";
+import { education } from "../data/education";
 
 const Home = () => {
 const [show,setShow] = useState(false)
@@ -192,23 +193,16 @@ animate();
       <section id="section3">
         <h2>Education</h2>
 
-        <div class="edu-card">
-          <h3>B.Tech in Computer Science and Engineering</h3>
-          <h4>LBS College of Engineering Kasaragod</h4>
-          <h4>2021-2025</h4>
+        <div className="education-section">
+          {education.map((item, index) => (
+            <div className="edu-card" key={index}>
+              <h3>{item.degree}</h3>
+              <h4>{item.school}</h4>
+              <h4>{item.year}</h4>
+            </div>
+          ))}
         </div>
 
-        <div class="edu-card">
-          <h3>Higher Secondary Education</h3>
-          <h4>JNMGHSS Puthuppanam, Vadakara</h4>
-          <h4>2019-2021</h4>
-        </div>
-
-        <div class="edu-card">
-          <h3>High School Education</h3>
-          <h4>JNMGHSS Puthuppanam, Vadakara</h4>
-          <h4>2018-2019</h4>
-        </div>
       </section>
 
 
@@ -220,19 +214,11 @@ animate();
         </div>
         {/* <div> */}
           <ul className="skills">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Python</li>
-            <li>Django</li>
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>Mysql</li>
-            <li>MongoDB</li>
-            <li>Bootstrap</li>
-            <li>C Programming</li>
+            {skills.map((skill, index) => (
+              <li key={index}>{skill}</li>
+            ))}
           </ul>
+
         {/* </div> */}
       </section>
       <section className="project">
@@ -253,41 +239,37 @@ animate();
         
       </section>
       {show && selectedProject && (
-  <div className="popupOverlay" onClick={close}>
-    <div className="popupBox" onClick={(e) => e.stopPropagation()}>
-      <h2>{selectedProject.title}</h2>
-      <p>{selectedProject.desc}</p>
+        <div className="popupOverlay" onClick={close}>
+          <div className="popupBox" onClick={(e) => e.stopPropagation()}>
+            <h2>{selectedProject.title}</h2>
+            <p>{selectedProject.desc}</p>
 
-      {/* ✅ Show Live Demo only if live link exists */}
-      {selectedProject.live && (
-        <p>
-          <a 
-            href={selectedProject.live}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Live Demo
-          </a>
-        </p>
+            {/* ✅ Show Live Demo only if live link exists */}
+            {selectedProject.live && (
+              <p>
+                <a 
+                  href={selectedProject.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Live Demo</a>
+              </p>
+            )}
+
+            {/* ✅ Show Code only if code link exists */}
+            {selectedProject.code && (
+              <p>
+                <a 
+                  href={selectedProject.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Code</a>
+              </p>
+            )}
+
+            <button onClick={close}>Close</button>
+          </div>
+        </div>
       )}
-
-      {/* ✅ Show Code only if code link exists */}
-      {selectedProject.code && (
-        <p>
-          <a 
-            href={selectedProject.code}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Code
-          </a>
-        </p>
-      )}
-
-      <button onClick={close}>Close</button>
-    </div>
-  </div>
-)}
 
 
 
