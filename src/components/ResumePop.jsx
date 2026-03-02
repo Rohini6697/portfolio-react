@@ -16,7 +16,7 @@ const ResumePopup = ({ close }) => {
         ></iframe>
 
         {/* Download Button */}
-        <a href="/resume.pdf" download className="downloadBtn">
+        <a href="/rohini_resume.pdf" download className="downloadBtn">
           Download Resume
         </a><br/>
 

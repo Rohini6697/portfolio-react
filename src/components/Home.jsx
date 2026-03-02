@@ -4,6 +4,12 @@ import {skills} from "../data/skills"
 import profile from "../../src/images/1.jpg"
 import { project } from "../data/projects";
 import { education } from "../data/education";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
+import { TypeAnimation } from "react-type-animation";
+import { certificates } from "../data/certificates";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
 
 const Home = () => {
 const [show,setShow] = useState(false)
@@ -162,6 +168,26 @@ animate();
 
   }, []);
 
+  const form = useRef();
+
+const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    "service_pmtvwvd",
+    "template_2nhur7j",
+    form.current,
+    "he4YdHW0jmohcBVuT"
+  )
+  .then(() => {
+      alert("Message sent successfully ✅");
+      form.current.reset();
+  })
+  .catch(() => {
+      alert("Failed to send ❌");
+  });
+};
+
   return (
     <div>
       {/* HERO SECTION */}
@@ -169,7 +195,31 @@ animate();
         <div className="hero-content">
           <div className="hero-text">
             <h1>Hi, I am Rohini Sureshbabu</h1>
-            <h3>Python Full-Stack Developer Intern</h3>
+            {/* <h3>Python Full-Stack Developer Intern</h3> */}
+            {/* <h1 className="hero-name">Hi, I'm Rohini 👋</h1> */}
+
+            <h2 className="hero-role">
+              I am a{" "}
+              <span className="highlight">
+                <TypeAnimation
+                  sequence={[
+                    "Python Fullstack Developer",
+                    2000,
+                    "Python Developer",
+                    2000,
+                    "React Developer",
+                    2000,
+                    "Frontend Developer",
+                    2000,
+                    "Backend Developer",
+                    2000,
+                  ]}
+                  speed={60}
+                  repeat={Infinity}
+                  cursor={true}
+                />
+              </span>
+            </h2>
           </div>
 
           <img src={profile} alt="Rohini" className="hero-img" />
@@ -178,7 +228,7 @@ animate();
 
 
       {/* ABOUT */}
-      <section id="section2">
+      <section id="about">
         <div id="div2">
           <h2>About Me</h2>
           <p>
@@ -190,7 +240,7 @@ animate();
       </section>
 
       {/* EDUCATION */}
-      <section id="section3">
+      <section id="education">
         <h2>Education</h2>
 
         <div className="education-section">
@@ -207,7 +257,7 @@ animate();
 
 
       {/* SKILLS SECTION */}
-      <section id="section4">
+      <section id="skills">
         <h1 className="skills-title">Skills</h1>
         <div className="skill-section">
           <canvas id="skillCanvas"></canvas>
@@ -221,7 +271,7 @@ animate();
 
         {/* </div> */}
       </section>
-      <section className="project">
+      <section id="projects" className="project">
         <h1>Projects</h1>
 
         <div className="gallery">
@@ -270,19 +320,75 @@ animate();
           </div>
         </div>
       )}
+{/* CERTIFICATES */}
+<section id="section-certificates">
+  <h2>Certificates</h2>
+
+  <div className="certificate-section">
+    {certificates.map((item, index) => (
+      <div className="certificate-card" key={index}>
+        <h3>{item.title}</h3>
+        <h4>{item.issuer}</h4>
+        <p>{item.year}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
 
 
  
-    <section className="connect">
-      <h1>Connect with Me</h1>
-      <div className="contact">
-        <input type="text" placeholder="Name"></input>
-        <input type="email" placeholder="Email"></input>
-        <textarea placeholder="Message"></textarea>
-        <button className="myBtn">Send</button>
-      </div>
-    </section> 
+    <section id="contact" className="connect">
+  <h1>Connect with Me</h1>
+
+  <form ref={form} onSubmit={sendEmail} className="contact">
+    <input 
+      type="text" 
+      name="name" 
+      placeholder="Name" 
+      required 
+    />
+
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Email" 
+      required 
+    />
+
+    <textarea 
+      name="message" 
+      placeholder="Message" 
+      required
+    ></textarea>
+
+    <button type="submit" className="myBtn">
+      Send
+    </button>
+  </form>
+
+  {/* 🔗 Social Links */}
+  <div className="social-links">
+  <a 
+    href="https://github.com/Rohini6697" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="social-icon"
+  >
+    <FaGithub />
+  </a>
+
+  <a 
+    href="https://www.linkedin.com/in/rohini-sureshbabu-479530317/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="social-icon"
+  >
+    <FaLinkedin />
+  </a>
+</div>
+</section>
+    
 
     </div>
   );

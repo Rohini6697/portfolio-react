@@ -6,7 +6,9 @@ body {
   padding: 0;
   background-color: #200238;
 }
-
+section {
+  scroll-margin-top: 100px;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -77,75 +79,78 @@ html {
 }
 
 /* --------------------------------------------------
-   EDUCATION SECTION
+   EDUCATION SECTION (Modern Glass Style)
 -------------------------------------------------- */
+
 #section3 {
-  padding: 50px 20px;
-  background-color: #200238;
-  font-family: "Poppins", sans-serif;
-  color: white;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #200238, #2d0450);
   text-align: center;
+  color: white;
 }
 
 #section3 h2 {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
 }
 
-/* GRID for education cards */
 .education-section {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-}
-
-/* Last card centered */
-.education-section .edu-card:last-child {
-  grid-column: 1 / -1;
-  justify-self: center;
-  width: 60%;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
 .edu-card {
-  background: #8320da7a;
-  padding: 20px 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-left: 5px solid #4a90e2;
-  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  padding: 30px 25px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.edu-card h3 {
-  margin: 0 0 8px;
-  font-size: 20px;
-  font-weight: 600;
-  color: white;
+/* Gradient Glow Border */
+.edu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(135deg, #890af1, #00eaff);
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: 0.4s ease;
 }
 
-.edu-card h4 {
-  margin: 5px 0;
-  font-size: 16px;
-  color: white;
+.edu-card:hover::before {
+  opacity: 1;
 }
 
 .edu-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(137, 10, 241, 0.4);
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-  .education-section {
-    grid-template-columns: 1fr;
-  }
-  
-  .education-section .edu-card:last-child {
-    width: 100%;
-  }
+.edu-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #00eaff;
+}
+
+.edu-card h4 {
+  margin: 6px 0;
+  font-size: 16px;
+  color: #ddd;
 }
 
 /* --------------------------------------------------
@@ -285,6 +290,62 @@ html {
 .imgWrapper:hover .btnGroup {
   opacity: 1;
 }
+/* --------------------------------------------------
+   CERTIFICATES SECTION
+-------------------------------------------------- */
+
+#section-certificates {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #1a0033, #2b004d);
+  text-align: center;
+  color: white;
+}
+
+#section-certificates h2 {
+  font-size: 40px;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+}
+
+.certificate-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.certificate-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  padding: 30px 25px;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.certificate-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 234, 255, 0.4);
+}
+
+.certificate-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #00eaff;
+}
+
+.certificate-card h4 {
+  margin: 6px 0;
+  font-size: 16px;
+  color: #ddd;
+}
+
+.certificate-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #aaa;
+}
 
 
 
@@ -374,4 +435,90 @@ html {
 .popupBox a {
   color: #00eaff;
   text-decoration: none;
+}
+/* --------------------------------------------------
+   SOCIAL LINKS
+-------------------------------------------------- */
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.social-links a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #8901f7;
+  border-color: #8901f7;
+  transform: translateY(-3px);
+}
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-name {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-role {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.highlight {
+  color: #00ffcc;
+  font-weight: bold;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fix scroll offset for fixed navbar */
+#about,
+#education,
+#skills,
+#projects,
+#section-certificates,
+#contact {
+  scroll-margin-top: 100px;
+}
+#about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#div2 {
+  max-width: 800px;
+  margin: auto;
+}
+#about p {
+  color: #ddd;
+}
+#education h2,
+#about h2,
+#projects h1,
+#skills h1,
+#contact h1 {
+  color: #ffff;
 }

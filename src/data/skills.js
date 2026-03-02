@@ -7,8 +7,9 @@ export const skills = [
   "Django",
   "Git",
   "GitHub",
+  "REST API",
   "MySQL",
   "MongoDB",
+  "PostgreSQL",
   "Bootstrap",
-  "C Programming"
 ];

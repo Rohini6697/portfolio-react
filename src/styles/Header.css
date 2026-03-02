@@ -1,55 +1,75 @@
-body{
-    background-color: #200238;
+/* --------------------------------------------------
+   HEADER (MATCHING YOUR THEME)
+-------------------------------------------------- */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 18px 0;
+  background: rgba(32, 2, 56, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  z-index: 1000;
 }
-.contents{
-    list-style-type: none;
-    display: flex;
-    justify-content: end;
-    gap: 50px;
-    padding-right: 30px;
-    
+
+/* NAV LIST */
+.contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.contents button{
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    background-color: transparent;
-    border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 50px;
+
+/* NAV LINKS */
+.contents li a {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: relative;
+  transition: 0.3s ease;
 }
-.contents button:hover{
-    background-color: blueviolet;
-    color: white;
-    font-weight: bolder;
+
+/* Hover Glow */
+.contents li a:hover {
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
 }
-/* Input + Textarea General Style */
-.contact input,
-.contact textarea {
-  color: white;              /* <-- text stays white */
-  outline: none;             
-  box-shadow: none;
-  background: transparent;
+
+/* Animated Underline (Neon) */
+.contents li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #890af1, #00eaff);
+  transition: 0.4s ease;
+}
+
+.contents li a:hover::after {
+  width: 100%;
+}
+
+/* RESUME BUTTON */
+.contents li button {
+  padding: 8px 20px;
+  border-radius: 25px;
   border: none;
-  border-bottom: 2px solid white;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #890af1, #370463);
+  color: white;
+  transition: 0.3s ease;
 }
 
-/* Placeholder style (before focus) */
-.contact input::placeholder,
-.contact textarea::placeholder {
-  color: white;              /* <-- placeholder white */
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-/* Placeholder disappears on focus */
-.contact input:focus::placeholder,
-.contact textarea:focus::placeholder {
-  color: transparent;
-}
-
-/* Remove any blue border on focus */
-.contact input:focus,
-.contact textarea:focus {
-  outline: none;
-  box-shadow: none;
+.contents li button:hover {
+  box-shadow: 0 0 15px #890af1;
+  transform: translateY(-3px);
 }
