@@ -10,13 +10,13 @@ const ResumePopup = ({ close }) => {
 
         {/* PDF Viewer */}
         <iframe
-          src="/rohini_resume.pdf"
+          src="/rohini_suresh_babu.pdf"
           title="Resume"
           className="resume-viewer"
         ></iframe>
 
         {/* Download Button */}
-        <a href="/rohini_resume.pdf" download className="downloadBtn">
+        <a href="/rohini_suresh_babu.pdf" download className="downloadBtn">
           Download Resume
         </a><br/>
 
