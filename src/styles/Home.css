@@ -522,3 +522,107 @@ html {
 #contact h1 {
   color: #ffff;
 }
+/* ================= MODERN CONTACT ================= */
+
+#contact {
+  text-align: center;
+  padding-bottom: 120px;
+}
+
+#contact h1 {
+  margin-bottom: 40px;
+  font-size: 32px;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* Glass Form Card */
+.contact {
+  max-width: 500px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.3s ease;
+}
+
+/* Soft hover elevation */
+.contact:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Inputs */
+.contact input,
+.contact textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 5px;
+  font-size: 15px;
+  color: white;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* Placeholder */
+.contact input::placeholder,
+.contact textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus underline animation */
+.contact input:focus,
+.contact textarea:focus {
+  border-bottom: 1px solid #00eaff;
+}
+
+/* Textarea size */
+.contact textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* Modern Button */
+.myBtn {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #890af1, #5a0cae);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Button hover */
+.myBtn:hover {
+  background: linear-gradient(135deg, #00eaff, #890af1);
+  transform: scale(1.05);
+}
+
+/* Social Icons */
+.social-links {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social-icon {
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #00eaff;
+  transform: translateY(-4px);
+}
