@@ -12,6 +12,6 @@ export const education = [
   {
     degree: "High School Education",
     school: "JNMGHSS Puthuppanam, Vadakara",
-    year: "2018–2019",
+    year: "2016–2019",
   }
 ];

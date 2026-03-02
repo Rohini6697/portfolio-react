@@ -69,6 +69,10 @@ html {
   padding: 50px 0;
   background-color: #200238;
 }
+#about h2{
+  font-size: 30px;
+  color: #fff;
+}
 
 #div2 {
   border: 2px solid white;
@@ -89,11 +93,12 @@ html {
   color: white;
 }
 
-#section3 h2 {
+#education h2 {
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 60px;
   letter-spacing: 2px;
+  color: #fff;
 }
 
 .education-section {
@@ -167,7 +172,8 @@ html {
   font-size: 38px;
   font-weight: bold;
   color: white;
-  margin: 0;
+  /* margin: 0; */
+  margin-top: 30;
 }
 
 .skill-section {
@@ -515,13 +521,13 @@ html {
 #about p {
   color: #ddd;
 }
-#education h2,
+/* #education h2,
 #about h2,
 #projects h1,
 #skills h1,
 #contact h1 {
   color: #ffff;
-}
+} */
 /* ================= MODERN CONTACT ================= */
 
 #contact {
@@ -625,4 +631,78 @@ html {
 .social-icon:hover {
   color: #00eaff;
   transform: translateY(-4px);
+}
+
+/* ----------------------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-role {
+    font-size: 1.2rem;
+  }
+
+  .hero-img {
+    width: 130px;
+    height: 130px;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .skill-section {
+    height: 300px;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .gallery {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .imgWrapper {
+    width: 100% !important;
+    height: 200px;
+  }
+
+  .imgWrapper:hover {
+    width: 100%;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .contact {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .contact input,
+  .contact textarea {
+    width: 100%;
+  }
+
+}
+@media (max-width: 768px) {
+
+  #education h2,
+  #section-certificates h2 {
+    font-size: 28px;
+  }
+
+  .edu-card,
+  .certificate-card {
+    padding: 20px;
+  }
+
 }
