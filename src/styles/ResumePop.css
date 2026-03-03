@@ -105,10 +105,8 @@
 }
 @media (max-width: 768px) {
 
-  .closeBtn {
-    top: 10px;
-    right: 12px;
-    font-size: 16px;
+  .popupBox {
+    padding-top: 50px;
   }
 
 }
