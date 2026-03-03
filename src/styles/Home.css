@@ -713,3 +713,17 @@ html {
   }
 
 }
+@media (max-width: 768px) {
+
+  .gallery {
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .imgWrapper {
+    width: 100% !important;
+    height: 200px;
+  }
+
+}
