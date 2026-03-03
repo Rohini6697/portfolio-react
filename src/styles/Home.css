@@ -728,7 +728,17 @@ html {
 
 }
 @media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
+
+  .skills-animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
+  canvas {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: block;
+  }
+
 }
