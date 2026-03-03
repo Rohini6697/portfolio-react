@@ -729,15 +729,13 @@ html {
 }
 @media (max-width: 768px) {
 
-  .skills-animation-container {
+  .skill-section {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  canvas {
-    max-width: 100% !important;
-    margin: 0 auto !important;
+  #skillCanvas {
     display: block;
   }
 

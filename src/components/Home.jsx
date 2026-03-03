@@ -72,8 +72,9 @@ const ctx = canvas.getContext("2d");
 
 let width, height, radius;
 function resizeCanvas() {
-  width = canvas.width = canvas.offsetWidth;
-  height = canvas.height = canvas.offsetHeight;
+  const rect = canvas.getBoundingClientRect();
+  width = canvas.width = rect.width;
+  height = canvas.height = rect.height;
   radius = Math.min(width, height) / 2.2;
 }
 resizeCanvas();
