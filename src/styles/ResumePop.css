@@ -77,6 +77,32 @@
   color: #00eaff;
   transform: rotate(30deg);
 }
+/* ================= MOBILE FIX ONLY ================= */
+@media (max-width: 768px) {
+
+  .popupBox {
+    width: 95%;
+    height: 90vh;
+    padding: 20px;
+  }
+
+  .resume-viewer {
+    height: 65vh;
+  }
+
+  .downloadBtn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .closeBtn {
+    position: static;
+    margin-top: 10px;
+  }
+
+}
 
 /* =============== ANIMATIONS =============== */
 @keyframes fadeIn {
