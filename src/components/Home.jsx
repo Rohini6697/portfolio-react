@@ -120,6 +120,9 @@ function rotateY(dot) {
 function animate() {
   ctx.clearRect(0, 0, width, height);
 
+  ctx.textAlign = "center";       // 👈 ADD THIS
+  ctx.textBaseline = "middle";    // 👈 ADD THIS
+
   const projected = [];
 
   dots.forEach((dot) => {
