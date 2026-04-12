@@ -2,6 +2,8 @@ import img1 from "../../src/images/career1.png"
 import img2 from "../../src/images/blood1.jpg"
 import img3 from "../../src/images/jewellery.jpg"
 import img4 from "../../src/images/store1.png"
+import img5 from "../../src/images/pawsome_care.jpg"
+
 
 export const project = [
     {
@@ -31,5 +33,12 @@ export const project = [
         live : "",
         code : "https://github.com/arathyrajeesh/ecommerce-mini-project",
         image : img4
+    },
+    {
+        title : "Pawsome Care",
+        desc : "PawsomeCare is a modern, user-friendly pet care application designed to simplify pet management for owners. The platform offers a seamless experience to manage pet profiles and schedule appointments with ease. It also includes smart features like AI-based guidance, ensuring better care and well-being for pets—all in one place.",
+        live : "https://pawsomecare.onrender.com",
+        code : "https://github.com/Rohini6697/pawsomecare",
+        image : img5
     }
 ]

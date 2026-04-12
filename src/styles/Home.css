@@ -411,43 +411,124 @@ html, body {
 /* --------------------------------------------------
    POPUP SECTION
 -------------------------------------------------- */
+/* Overlay with smooth fade */
 .popupOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
+  animation: fadeIn 0.3s ease;
 }
 
+/* Popup container */
 .popupBox {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  border-radius: 18px;
-  padding: 30px;
-  width: 420px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 25px;
+  width: 450px;
   max-width: 90%;
   color: white;
   text-align: center;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  animation: scaleUp 0.3s ease;
 }
 
-.popupBox button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #7005e3;
+/* Image */
+.popupImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* Description */
+.popupDesc {
+  font-size: 14px;
+  color: #ddd;
+  margin: 10px 0 15px;
+}
+
+/* Tech stack badges */
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.techStack span {
+  background: linear-gradient(135deg, #890af1, #00eaff);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* Buttons */
+.popupButtons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.liveBtn,
+.codeBtn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+/* Live button */
+.liveBtn {
+  background: #00eaff;
+  color: black;
+}
+
+.liveBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Code button */
+.codeBtn {
+  background: #890af1;
+  color: white;
+}
+
+.codeBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Close button (top-right) */
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
   border: none;
   color: white;
-  border-radius: 8px;
+  font-size: 20px;
   cursor: pointer;
 }
 
-/* Link styling */
-.popupBox a {
-  color: #00eaff;
-  text-decoration: none;
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 /* --------------------------------------------------
    SOCIAL LINKS
@@ -537,73 +618,90 @@ html {
 } */
 /* ================= MODERN CONTACT ================= */
 
-#contact {
+/* Title */
+.contact-title {
   text-align: center;
-  padding-bottom: 120px;
-}
-
-#contact h1 {
-  margin-bottom: 40px;
-  font-size: 32px;
-  color: #ffffff;
+  font-size: 34px;
+  color: white;
+  margin-bottom: 30px;
   letter-spacing: 1px;
 }
 
-/* Glass Form Card */
+/* Glass Card */
 .contact {
-  max-width: 500px;
+  max-width: 520px;
   margin: auto;
   padding: 40px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.15);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  transition: 0.3s ease;
+  gap: 25px;
+  animation: fadeUp 0.8s ease;
 }
 
-/* Soft hover elevation */
+/* Hover effect */
 .contact:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(137, 10, 241, 0.4);
+}
+
+/* Input container */
+.inputBox {
+  position: relative;
 }
 
 /* Inputs */
-.contact input,
-.contact textarea {
+.inputBox input,
+.inputBox textarea {
+  width: 400px;
+  padding: 14px 10px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 12px 5px;
-  font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
   color: white;
+  font-size: 15px;
   outline: none;
   transition: 0.3s ease;
 }
 
-/* Placeholder */
-.contact input::placeholder,
-.contact textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+/* Textarea */
+.inputBox textarea {
+  min-height: 100px;
+  resize: none;
 }
 
-/* Focus underline animation */
-.contact input:focus,
-.contact textarea:focus {
+/* Floating label */
+.inputBox label {
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+/* Focus + active */
+.inputBox input:focus,
+.inputBox textarea:focus {
   border-bottom: 1px solid #00eaff;
 }
 
-/* Textarea size */
-.contact textarea {
-  resize: none;
-  min-height: 100px;
+/* Label animation */
+.inputBox input:focus + label,
+.inputBox input:valid + label,
+.inputBox textarea:focus + label,
+.inputBox textarea:valid + label {
+  top: -10px;
+  font-size: 12px;
+  color: #00eaff;
 }
 
-/* Modern Button */
+/* Button */
 .myBtn {
-  margin-top: 10px;
   padding: 12px;
   border-radius: 30px;
   border: none;
@@ -619,25 +717,41 @@ html {
 .myBtn:hover {
   background: linear-gradient(135deg, #00eaff, #890af1);
   transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 234, 255, 0.4);
 }
 
-/* Social Icons */
+/* Social links */
 .social-links {
   margin-top: 40px;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
 }
 
+/* Icons */
 .social-icon {
-  font-size: 30px;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 28px;
+  color: rgba(255,255,255,0.7);
   transition: 0.3s ease;
 }
 
+/* Hover glow */
 .social-icon:hover {
   color: #00eaff;
-  transform: translateY(-4px);
+  transform: translateY(-5px) scale(1.1);
+  text-shadow: 0 0 15px #00eaff;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ----------------------------------------------------------------------------------------- */

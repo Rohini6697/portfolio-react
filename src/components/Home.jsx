@@ -293,37 +293,50 @@ const sendEmail = (e) => {
         
       </section>
       {show && selectedProject && (
-        <div className="popupOverlay" onClick={close}>
-          <div className="popupBox" onClick={(e) => e.stopPropagation()}>
-            <h2>{selectedProject.title}</h2>
-            <p>{selectedProject.desc}</p>
+  <div className="popupOverlay" onClick={close}>
+    <div className="popupBox" onClick={(e) => e.stopPropagation()}>
 
-            {/* ✅ Show Live Demo only if live link exists */}
-            {selectedProject.live && (
-              <p>
-                <a 
-                  href={selectedProject.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >Live Demo</a>
-              </p>
-            )}
+      {/* Image */}
+      <img 
+        src={selectedProject.image} 
+        alt="" 
+        className="popupImage"
+      />
 
-            {/* ✅ Show Code only if code link exists */}
-            {selectedProject.code && (
-              <p>
-                <a 
-                  href={selectedProject.code}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >Code</a>
-              </p>
-            )}
+      {/* Title */}
+      <h2>{selectedProject.title}</h2>
 
-            <button onClick={close}>Close</button>
-          </div>
+      {/* Description */}
+      <p className="popupDesc">{selectedProject.desc}</p>
+
+      {/* Tech Stack */}
+      {selectedProject.tech && (
+        <div className="techStack">
+          {selectedProject.tech.map((t, i) => (
+            <span key={i}>{t}</span>
+          ))}
         </div>
       )}
+
+      {/* Buttons */}
+      <div className="popupButtons">
+        {selectedProject.live && (
+          <a href={selectedProject.live} target="_blank" rel="noreferrer">
+            <button className="liveBtn">Live Demo</button>
+          </a>
+        )}
+
+        {selectedProject.code && (
+          <a href={selectedProject.code} target="_blank" rel="noreferrer">
+            <button className="codeBtn">View Code</button>
+          </a>
+        )}
+      </div>
+
+      <button className="closeBtn" onClick={close}>✕</button>
+    </div>
+  </div>
+)}
 {/* CERTIFICATES */}
 <section id="section-certificates">
   <h2>Certificates</h2>
@@ -342,55 +355,51 @@ const sendEmail = (e) => {
 
 
  
-    <section id="contact" className="connect">
-  <h1>Connect with Me</h1>
+   <section id="contact" className="connect">
+  <h1 className="contact-title">Connect with Me</h1>
 
   <form ref={form} onSubmit={sendEmail} className="contact">
-    <input 
-      type="text" 
-      name="name" 
-      placeholder="Name" 
-      required 
-    />
 
-    <input 
-      type="email" 
-      name="email" 
-      placeholder="Email" 
-      required 
-    />
+    <div className="inputBox">
+      <input type="text" name="name" required />
+      <label>Name</label>
+    </div>
 
-    <textarea 
-      name="message" 
-      placeholder="Message" 
-      required
-    ></textarea>
+    <div className="inputBox">
+      <input type="email" name="email" required />
+      <label>Email</label>
+    </div>
+
+    <div className="inputBox">
+      <textarea name="message" required></textarea>
+      <label>Message</label>
+    </div>
 
     <button type="submit" className="myBtn">
-      Send
+      Send Message
     </button>
   </form>
 
-  {/* 🔗 Social Links */}
+  {/* Social Links */}
   <div className="social-links">
-  <a 
-    href="https://github.com/Rohini6697" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="social-icon"
-  >
-    <FaGithub />
-  </a>
+    <a 
+      href="https://github.com/Rohini6697" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="social-icon"
+    >
+      <FaGithub />
+    </a>
 
-  <a 
-    href="https://www.linkedin.com/in/rohini-sureshbabu-479530317/" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="social-icon"
-  >
-    <FaLinkedin />
-  </a>
-</div>
+    <a 
+      href="https://www.linkedin.com/in/rohini-sureshbabu-479530317/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="social-icon"
+    >
+      <FaLinkedin />
+    </a>
+  </div>
 </section>
     
 
