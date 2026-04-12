@@ -8,6 +8,7 @@ body {
 }
 section {
   scroll-margin-top: 100px;
+  padding: 60px 20px; /* 👈 THIS FIXES SIDE TOUCH */
 }
 html {
   scroll-behavior: smooth;
