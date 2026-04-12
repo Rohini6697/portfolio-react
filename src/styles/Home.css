@@ -8,7 +8,7 @@ body {
 }
 section {
   scroll-margin-top: 100px;
-  padding: 60px 20px; /* 👈 THIS FIXES SIDE TOUCH */
+  padding: 30px 20px;
 }
 html {
   scroll-behavior: smooth;
@@ -803,6 +803,11 @@ html {
 
 }
 @media (max-width: 768px) {
+  #particles-js {
+    height:70vh; /* instead of 100vh */
+  }
+}
+@media (max-width: 768px) {
 
   .contact {
     width: 90%;
@@ -870,5 +875,14 @@ html {
 
   .skill-section {
     height: auto;
+  }
+}
+@media (max-width: 768px) {
+  #particles-js canvas {
+    display: none; /* ✅ hides particles animation */
+  }
+
+  #particles-js {
+    background: linear-gradient(135deg, #200238, #3a0a6a); /* optional clean bg */
   }
 }
