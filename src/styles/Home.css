@@ -855,3 +855,20 @@ html {
   }
 
 }
+@media (max-width: 768px) {
+  .hero-text h1,
+  .hero-role,
+  .skills-title {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+@media (max-width: 768px) {
+  #skillCanvas {
+    display: none; /* hides animation */
+  }
+
+  .skill-section {
+    height: auto;
+  }
+}
